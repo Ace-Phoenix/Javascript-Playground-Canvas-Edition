@@ -57,9 +57,14 @@ function bouncyBouncy() {
     function bouncy() {
         if ((bouncyBall.center.y + bouncyBall.num1) == c.height) {
             bouncyBall = new Asset("Circle", bouncyBall.center, bouncyBall.num1, bouncyBall.num2, "north-east");
+        }else if (bouncyBall.direction == "north-east") {
+            bouncyBall = new Asset("Circle", {x:bouncyBall.center.x+5,y:bouncyBall.center.y});
         }
         if ((bouncyBall.center.y - bouncyBall.num1) == 0) {
             bouncyBall = new Asset("Circle", bouncyBall.center, bouncyBall.num1, bouncyBall.num2, "south-west");
+        }else if (bouncyBall.direction == "south-west") {
+            //So that im not just doing it all myself im deciding to have the rest of you figure out how to
+            // / what to put in here and the two bellow good luck
         }
         if ((bouncyBall.center.x + bouncyBall.num1) == c.width) {
             bouncyBall = new Asset("Circle", bouncyBall.center, bouncyBall.num1, bouncyBall.num2, "north-west");
@@ -67,5 +72,6 @@ function bouncyBouncy() {
         if ((bouncyBall.center.x - bouncyBall.num1) == 0) {
             bouncyBall = new Asset("Circle", bouncyBall.center, bouncyBall.num1, bouncyBall.num2, "south-east");
         }
+        
     }
 }
