@@ -67,8 +67,5 @@ function bouncyBouncy() {
         if ((bouncyBall.center.x - bouncyBall.num1) == 0) {
             bouncyBall = new Asset("Circle", bouncyBall.center, bouncyBall.num1, bouncyBall.num2, "south-east");
         }
-        if () {
-            //code
-        }
     }
 }
