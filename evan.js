@@ -5,7 +5,7 @@
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
 
-var x = myCanvas.width / 20; //These 2 variables determine the starting circles location, in this case, the top right of the screen.
+var x = myCanvas.width / 20; //These 2 variables determine the circle's starting location, in this case, the top left of the screen.
 var y = myCanvas.height / 20;
 
 var dx = 2; //These variables will be used later to change the position of the circle.
@@ -15,7 +15,7 @@ var ballSize = 20; //Sets the circle's radius.
 
 function drawCircle() {
   ctx.beginPath();
-  ctx.arc(x, y, ballSize, 0, Math.PI*2); //The circle, on frame one, will always start at the top right, and it's size will always be ballSize.
+  ctx.arc(x, y, ballSize, 0, Math.PI*2); //The circle, on frame one, will always start at the top left, and it's size will always be ballSize.
   ctx.fillStyle = "#0095DD"; //Sets the color of the circle to light blue.
   ctx.fill(); //Fills in the circle with the color provided in fillStyle.
   ctx.stroke();
