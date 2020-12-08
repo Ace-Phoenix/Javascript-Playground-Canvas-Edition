@@ -1,40 +1,50 @@
-//From Evan:
-//In my eyes this is a lot easier to understand than that other thing.
-//Feel free to reference if needed.
+var canvas = document.getElementById("myCanvas");
+// ^^^ {id: "myCanvas", width: 400, height: 200} made from the html
+var context = canvas.getContext("2d");
 
-var c = document.getElementById("myCanvas");
-var ctx = c.getContext("2d");
+//var controler = setInterval(circleFunctionNoClear, 100);
 
-var x = myCanvas.width / 20; //These 2 variables determine the starting circles location, in this case, the top right of the screen.
-var y = myCanvas.height / 20;
-
-var dx = 2; //These variables will be used later to change the position of the circle.
-var dy = 4; //Changing both of these numbers will also change the speed of the circle (in other words, how far the circle moves per frame).
-
-var ballSize = 20; //Sets the circle's radius.
-
-function drawCircle() {
-  ctx.beginPath();
-  ctx.arc(x, y, ballSize, 0, Math.PI*2); //The circle, on frame one, will always start at the top right, and it's size will always be ballSize.
-  ctx.fillStyle = "#0095DD"; //Sets the color of the circle to light blue.
-  ctx.fill(); //Fills in the circle with the color provided in fillStyle.
-  ctx.stroke();
+// function for inside the inside function
+function circleFunctionNoClear(){
+  var rad = Math.floor(Math.random() * 50);
+  var maxX = canvas.width - (rad * 2);
+  var maxY = canvas.height - (rad * 2);
+  var xVal = Math.floor(Math.random() * maxX) + rad;
+  var yVal = Math.floor(Math.random() * maxY) + rad;
+  context.beginPath();
+  context.arc(xVal, yVal, rad, 0, 2 * Math.PI);
+  context.stroke();
 }
 
-function draw() {
-  ctx.clearRect(0, 0, myCanvas.width, myCanvas.height); //Clears the canvas every frame, so a new circle can be drawn.
-  drawCircle();
-
-  if(x + dx > myCanvas.width - ballSize || x + dx < ballSize) { //If the circle's x position exceeds the width of the canvas...
-    dx = -dx; //Its x direction will be flipped.
-  }
-
-  if(y + dy > myCanvas.height - ballSize || y + dy < ballSize) { //If the circle's y position exceeds the height of the canvas...
-    dy = -dy; //Its y direction will be flipped.
-  }
-
-  x += dx;
-  y += dy;
+function squareFunctionNoClear(){
+  var width = Math.floor(Math.random() * 100);
+  var maxX = canvas.width - (width);
+  var maxY = canvas.height - (width);
+  var xVal = Math.floor(Math.random() * maxX);
+  var yVal = Math.floor(Math.random() * maxY);
+  context.beginPath();
+  context.rect(xVal, yVal, width, width);
+  context.stroke();
 }
 
-setInterval(draw, 10);
+
+// fancy loop getaround for animating
+function circles(){
+  var interval = setInterval(step, 100);
+  var counter = 0;
+
+  function step(){ // this is within the circles namespace
+    if ((counter % 20) == 0) {
+      context.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    if ((counter % 2) == 0){
+      circleFunctionNoClear();
+    }
+    else {
+      squareFunctionNoClear();
+    }
+    counter ++;
+  }
+}
+
+circles();
