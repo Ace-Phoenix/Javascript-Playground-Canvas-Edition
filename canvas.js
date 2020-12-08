@@ -25,7 +25,7 @@ var ctx = c.getContext("2d");
 //var asseter = new Asset(t, {x:pos.x, y:pos.y}, pos.r, Math.floor(Math.random()*10)+2);
 //asseter.draw();
 //}, 100);
-setInterval(function(){ctx.clearRect(0,0,400, 300);},20);
+setInterval(function(){ctx.clearRect(0,0,400, 400);},20);
 
 
 
@@ -53,29 +53,29 @@ class Asset {
 }
 var bouncyBall = new Asset("circle", {x:20,y:20}, 10, 5, "south-east");
 function bouncyBouncy() {
-  setInterval(bouncy, 10);
-  function bouncy() {
-      if ((bouncyBall.center.x + bouncyBall.num1) == c.width) {
-        bouncyBall = new Asset("Circle", bouncyBall.center, bouncyBall.num1, bouncyBall.num2, "north-west");
-      }else if (bouncyBall.direction == "north-east") {
-        bouncyBall = new Asset("Circle", {x:bouncyBall.center.x+1,y:bouncyBall.center.y-1},bouncyBall.num1, bouncyBall.num2, "north-east");
-      }
-      if ((bouncyBall.center.y - bouncyBall.num1) == 0) {
-        bouncyBall = new Asset("Circle", bouncyBall.center, bouncyBall.num1, bouncyBall.num2, "south-west");
-      }else if (bouncyBall.direction == "south-east") {
-        bouncyBall = new Asset("Circle", {x:bouncyBall.center.x+1, y:bouncyBall.center.y+1}, bouncyBall.num1, bouncyBall.num2, "south-east");
-      }
-      if ((bouncyBall.center.x - bouncyBall.num1) <= 0) {
-        bouncyBall = new Asset("Circle", bouncyBall.center, bouncyBall.num1, bouncyBall.num2, "south-east");
-      }else if (bouncyBall.direction == "north-west") {
-        bouncyBall = new Asset("Circle", {x:bouncyBall.center.x-1, y:bouncyBall.center.y-1}, bouncyBall.num1, bouncyBall.num2, "north-west");
-      }
-      if ((bouncyBall.center.y - bouncyBall.num1) == c.height) {
-        bouncyBall = new Asset("Circle", bouncyBall.center, bouncyBall.num1, bouncyBall.num2, "north-east");
-      }else if (bouncyBall.direction == "south-west") {//down right
-        bouncyBall = new Asset("Circle", {x:bouncyBall.center.x-1, y:bouncyBall.center.y+1}, bouncyBall.num1, bouncyBall.num2, "south-west");
-      }
-      bouncyBall.draw();
+    setInterval(bouncy, 10);
+    function bouncy() {
+        if ((bouncyBall.center.x + bouncyBall.num1) == c.width) {
+            bouncyBall = new Asset("Circle", bouncyBall.center, bouncyBall.num1, bouncyBall.num2, "north-west");
+        }else if (bouncyBall.direction == "north-east") {
+            bouncyBall = new Asset("Circle", {x:bouncyBall.center.x+1,y:bouncyBall.center.y-1},bouncyBall.num1, bouncyBall.num2, "north-east");
+        }
+        if ((bouncyBall.center.y - bouncyBall.num1) == 0) {
+            bouncyBall = new Asset("Circle", bouncyBall.center, bouncyBall.num1, bouncyBall.num2, "south-west");
+        }else if (bouncyBall.direction == "south-east") {
+                       bouncyBall = new Asset("Circle", {x:bouncyBall.center.x+1, y:bouncyBall.center.y+1}, bouncyBall.num1, bouncyBall.num2, "south-east");
+        }
+        if ((bouncyBall.center.x - bouncyBall.num1) <= 0) {
+            bouncyBall = new Asset("Circle", bouncyBall.center, bouncyBall.num1, bouncyBall.num2, "south-east");
+        }else if (bouncyBall.direction == "north-west") {
+            bouncyBall = new Asset("Circle", {x:bouncyBall.center.x-1, y:bouncyBall.center.y-1}, bouncyBall.num1, bouncyBall.num2, "north-west");
+        }
+        if ((bouncyBall.center.y - bouncyBall.num1) == c.height) {
+            bouncyBall = new Asset("Circle", bouncyBall.center, bouncyBall.num1, bouncyBall.num2, "north-east");
+        }else if (bouncyBall.direction == "south-west") {//down right
+                    bouncyBall = new Asset("Circle", {x:bouncyBall.center.x-1, y:bouncyBall.center.y+1}, bouncyBall.num1, bouncyBall.num2, "south-west");
+}
+        bouncyBall.draw();
     }
 }
 
@@ -87,14 +87,14 @@ bouncyBouncy();
 //few questions to answer because i want to know if you all know how my class works there are three questions just
 //make another space put your name and then your answer
 
-
+/*
 //Question One : How does the Asset class work? (MC)
 //a. it doesn't
 //b. it only makes parameters for an object
 //c. it makes the parameters and draws the object
 //d. none of the above
 
-
+*/
 
 //Question Two : What is the width of the canvas i use and how do you change it
 //
