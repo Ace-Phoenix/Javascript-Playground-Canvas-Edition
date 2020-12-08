@@ -1,13 +1,15 @@
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
 
-var x = myCanvas.width / 20; //These 2 variables determine the starting circles location, in this case, the top right of the screen.
-var y = myCanvas.height / 20;
+var x = c.width / 20; //These 2 variables determine the starting circles location, in this case, the top right of the screen.
+var y = c.height / 20;
 
 var dx = 2; //These variables will be used later to change the position of the circle.
 var dy = 4; //Changing both of these numbers will also change the speed of the circle (in other words, how many units the circle moves per frame).
 
-var ballSize = 20; //Sets the circle's radius.
+var size = (Math.abs(c.width - c.height)) / 10;
+if (size == 0) { size = 25; }
+var ballSize = Math.floor(Math.random() * size - 5) + 6; //Sets the circle's radius.
 
 function drawCircle() {
   ctx.beginPath();
