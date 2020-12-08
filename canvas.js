@@ -25,7 +25,7 @@ var ctx = c.getContext("2d");
 //var asseter = new Asset(t, {x:pos.x, y:pos.y}, pos.r, Math.floor(Math.random()*10)+2);
 //asseter.draw();
 //}, 100);
-setInterval(function(){ctx.clearRect(0,0,400, 300);},20);
+setInterval(function(){ctx.clearRect(0,0,400, 400);},20);
 
 
 
