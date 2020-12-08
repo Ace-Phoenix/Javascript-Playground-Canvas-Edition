@@ -9,13 +9,13 @@ var x = myCanvas.width / 20; //These 2 variables determine the starting circles 
 var y = myCanvas.height / 20;
 
 var dx = 2; //These variables will be used later to change the position of the circle.
-var dy = 4; //Changing both of these numbers will also change the speed of the circle (in other words, how many units the circle moves per frame).
+var dy = 4; //Changing both of these numbers will also change the speed of the circle (in other words, how far the circle moves per frame).
 
 var ballSize = 20; //Sets the circle's radius.
 
 function drawCircle() {
   ctx.beginPath();
-  ctx.arc(x, y, ballSize, 0, Math.PI*2); //The circle, on frame one, will always start in the middle, and its size will always be set to ballSize.
+  ctx.arc(x, y, ballSize, 0, Math.PI*2); //The circle, on frame one, will always start at the top right, and it's size will always be ballSize.
   ctx.fillStyle = "#0095DD"; //Sets the color of the circle to light blue.
   ctx.fill(); //Fills in the circle with the color provided in fillStyle.
   ctx.stroke();
