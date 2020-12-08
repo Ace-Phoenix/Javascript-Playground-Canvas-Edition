@@ -78,11 +78,10 @@ function bouncyBouncy() {
         bouncyBall.draw();
     }
 }
-<<<<<<< HEAD
-=======
+
 bouncyBouncy();
 // im going to have you guys figure out how to make the circle work with corners because currently it has
-//sad when it gets to a corner also this shows when i changed the canvas to 400 400 so ge to it i guess 
+//sad when it gets to a corner also this shows when i changed the canvas to 400 400 so ge to it i guess
 
 
 //few questions to answer because i want to know if you all know how my class works there are three questions just
@@ -110,4 +109,3 @@ bouncyBouncy();
 
 //These question are just so that i know that all of you know how my code works so far to make and draw objects
 //and with easy access to remove the object when you need to and update and change it when needed :)
->>>>>>> db9bb259960c6fabb6810bc6cf5b30b0096a529c
