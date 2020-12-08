@@ -68,10 +68,35 @@ function bouncyBouncy() {
         }
         if ((bouncyBall.center.x + bouncyBall.num1) == c.width) {
             bouncyBall = new Asset("Circle", bouncyBall.center, bouncyBall.num1, bouncyBall.num2, "north-west");
-        }
+        }//here we need a else if statement  
         if ((bouncyBall.center.x - bouncyBall.num1) == 0) {
             bouncyBall = new Asset("Circle", bouncyBall.center, bouncyBall.num1, bouncyBall.num2, "south-east");
-        }
+        }//as well as here 
         
     }
 }
+//few questions to answer because i want to know if you all know how my class works there are three questions just
+//make another space put your name and then your answer
+
+
+//Question One : How does the Asset class work? (MC)
+//a. it doesn't
+//b. it only makes parameters for an object
+//c. it makes the parameters and draws the object
+//d. none of the above
+
+
+
+//Question Two : What is the width of the canvas i use and how do you change it
+//
+
+
+//Question Three : Do you understand my code or do I have to explain all of it? (y/n/m)
+//Yes?
+//No?
+//Maybe?//Maybe will need to be explained
+
+
+
+//These question are just so that i know that all of you know how my code works so far to make and draw objects
+//and with easy access to remove the object when you need to and update and change it when needed :)
