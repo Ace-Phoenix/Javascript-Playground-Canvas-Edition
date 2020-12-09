@@ -14,7 +14,7 @@ var ballSize = Math.floor(Math.random() * size - 5) + 6; //Sets the circle's rad
 function drawCircle() {
   ctx.beginPath();
   ctx.arc(x, y, ballSize, 0, Math.PI*2); //The circle, on frame one, will always start in the middle, and its size will always be set to ballSize.
-  ctx.fillStyle = "#0095DD"; //Sets the color of the circle to light blue.
+  ctx.fillStyle = "#B300B3"; //Sets the color of the circle to light blue.
   ctx.fill(); //Fills in the circle with the color provided in fillStyle.
   ctx.stroke();
 }
