@@ -25,6 +25,7 @@ function drawCircle() {
 }
 
 function draw() {
+  var lines = [];
   ctx.clearRect(0, 0, c.width, c.height); //Clears the canvas every frame, so a new circle can be drawn.
   drawCircle();
 
