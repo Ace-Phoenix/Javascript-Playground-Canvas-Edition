@@ -19,9 +19,20 @@ function drawCircle() {
   ctx.stroke();
 }
 
+function drawLine() {
+  ctx.beginPath();
+  ctx.moveTo();
+  for (var i = lines.length - 1; i >= 0; i--) {
+    lineTo();
+  }
+  ctx.stroke();
+}
+
 function draw() {
   var lines = [];
+  var currentPos = {};
   ctx.clearRect(0, 0, c.width, c.height); //Clears the canvas every frame, so a new circle can be drawn.
+  drawLine();
   drawCircle();
 
   if(x + dx > myCanvas.width - ballSize || x + dx < ballSize) { //If the circle's x position exceeds the width of the canvas...
