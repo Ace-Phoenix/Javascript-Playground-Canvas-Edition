@@ -17,7 +17,10 @@ var size = (Math.abs(c.width - c.height)) / 10;
 if (size == 0) { size = 25; };
 var one = Math.floor(Math.random()*13)+2;
 var two = Math.floor(Math.random()*11)+4;
-var ball = {x:c.width / 20, y:c.height / 20, dx:one, dy:two, ballSize:Math.floor(Math.random() * size - 5) + 6};
+var rad = Math.floor(Math.random() * size - 5) + 6;
+var xPos = Math.floor(Math.random() * (c.width - (rad * 2))) + rad;
+var yPos = Math.floor(Math.random() * (c.height - (rad * 2))) + rad;
+var ball = {x:xPos, y:yPos, dx:one, dy:two, ballSize:rad};
 
 function drawCircle() {
  var colors = ["red", "green", "blue", "violet", "pink", "cyan", "yellow", "orange"];
@@ -51,7 +54,7 @@ function lineDraw() {
   else {
     ctx.moveTo(lines[i].x, lines[i].y);
     ctx.lineTo(lines[i+1].x,lines[i+1].y);
-    
+
   }
   if (rainbow == true) {
     //code
@@ -60,10 +63,10 @@ function lineDraw() {
   }
   ctx.strokeStyle = color;
   }else{
-  ctx.strokeStyle = "black";   
+  ctx.strokeStyle = "black";
   }
   }
-  
+
   ctx.stroke();
 }
 
@@ -85,4 +88,4 @@ function draw() {
  ball.y += ball.dy;
 }
 
-setInterval(draw, 25);
+setInterval(draw, 15);
