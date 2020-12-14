@@ -3,7 +3,7 @@ var ctx = c.getContext("2d");
 var rl = document.getElementById("rainbowLines");
 var rb = document.getElementById("rainbowBall");
 /*
-var x = c.width / 20; //These 2 variables determine the starting circles location, in this case, the top left of the screen.
+var x = c.width / 20; //These 2 variables determine the starting circles location, in this case, the top right of the screen.
 var y = c.height / 20;
 
 var dx = 2; //These variables will be used later to change the position of the circle.
@@ -17,16 +17,18 @@ var size = (Math.abs(c.width - c.height)) / 10;
 if (size == 0) { size = 25; };
 var one = Math.floor(Math.random()*13)+2;
 var two = Math.floor(Math.random()*11)+4;
-var rad = Math.floor(Math.random() * size - 5) + 6;
-var xPos = Math.floor(Math.random() * (c.width - (rad * 2))) + rad;
-var yPos = Math.floor(Math.random() * (c.height - (rad * 2))) + rad;
-var ball = {x:xPos, y:yPos, dx:one, dy:two, ballSize:rad};
+ var myImg = new Image();
+     myImg.onload = function (){
+      drawSqr();
+    };
+    myImg.src = "phoenixAced.png";
 
-function drawCircle() {
+var sqr = {x:c.width / 2, y:c.height / 2, dx:one, dy:two, width:80, height:80};
+
+function drawSqr() {
  var colors = ["red", "green", "blue", "violet", "pink", "cyan", "yellow", "orange"];
    var rainbow = rb.checked;
- ctx.beginPath();
- ctx.arc(ball.x, ball.y, ball.ballSize, 0, Math.PI*2); //The circle, on frame one, will always start at the top left, and its size will always be set to ballSize.
+
    if (rainbow == true) {
     //code
   for (var j = 0; j< 10; j++) {
@@ -36,11 +38,9 @@ function drawCircle() {
   }else{
    ctx.fillStyle = "#0095DD"; //Sets the color of the circle to light blue.
   }
-
- ctx.fill(); //Fills in the circle with the color provided in fillStyle.
- ctx.stroke();
+        ctx.drawImage(myImg, sqr.x, sqr.y, sqr.width, sqr.height);
 }
-  var lines = [{x:ball.x,y:ball.y}];
+  var lines = [{x:(sqr.x+(sqr.width/2)),y:(sqr.y + (sqr.height/2))}];
 
 function lineDraw() {
   ctx.beginPath();
@@ -48,7 +48,7 @@ function lineDraw() {
   var colors = ["red", "green", "blue", "violet", "pink", "cyan", "yellow", "orange"];
   for (var i = lines.length - 1; i >= 0; i--) {
   if (i == lines.length-1) {
-    ctx.moveTo(ball.x,ball.y);
+    ctx.moveTo((sqr.x+(sqr.width/2)),(sqr.y + (sqr.height/2)));
     ctx.lineTo(lines[i].x,lines[i].y);
   }
   else {
@@ -69,23 +69,30 @@ function lineDraw() {
 
   ctx.stroke();
 }
-
 function draw() {
  ctx.clearRect(0, 0, c.width, c.height); //Clears the canvas every frame, so a new circle can be drawn.
  lineDraw();
- drawCircle();
- if((ball.x + ball.dx > c.width - ball.ballSize) || (ball.x + ball.dx < ball.ballSize)) { //If the circle's x position exceeds the width of the canvas...
-   ball.dx = -ball.dx; //Its x direction will be flipped.
-   lines.push({x:ball.x,y:ball.y});
+ drawSqr();
+ if((sqr.x + sqr.dx > c.width) || (sqr.x + sqr.dx < 0)) { //If the circle's x position exceeds the width of the canvas...
+   sqr.dx = -sqr.dx; //Its x direction will be flipped.
+   lines.push({x:(sqr.x+(sqr.width/2)),y:(sqr.y + (sqr.height/2))});
+ }
+ if(((sqr.x +sqr.width) + sqr.dx > c.width) || (sqr.x + sqr.dx < 0)) { //If the circle's x position exceeds the width of the canvas...
+   sqr.dx = -sqr.dx; //Its x direction will be flipped.
+   lines.push({x:(sqr.x+(sqr.width/2)),y:(sqr.y + (sqr.height/2))});
  }
 
- if((ball.y + ball.dy > c.height - ball.ballSize) || (ball.y + ball.dy < ball.ballSize)) { //If the circle's y position exceeds the height of the canvas...
-   ball.dy = -ball.dy; //Its y direction will be flipped.
-   lines.push({x:ball.x,y:ball.y});
+ if((sqr.y + sqr.dy > c.height) || (sqr.y + sqr.dy < 0)) { //If the circle's y position exceeds the height of the canvas...
+   sqr.dy = -sqr.dy; //Its y direction will be flipped.
+   lines.push({x:(sqr.x+(sqr.width/2)),y:(sqr.y + (sqr.height/2))});
+ }
+ if(((sqr.y+sqr.height) + sqr.dy > c.height) || (sqr.y + sqr.dy < 0)) { //If the circle's y position exceeds the height of the canvas...
+   sqr.dy = -sqr.dy; //Its y direction will be flipped.
+   lines.push({x:(sqr.x+(sqr.width/2)),y:(sqr.y + (sqr.height/2))});
  }
 
- ball.x += ball.dx;
- ball.y += ball.dy;
+ sqr.x += sqr.dx;
+ sqr.y += sqr.dy;
 }
 
-setInterval(draw, 15);
+setInterval(draw, 35);

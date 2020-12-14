@@ -1,111 +1,98 @@
-
-var c = document.getElementById("canvas");
+var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
-//
-//setInterval(function(){
-//ctx.beginPath() ;
-//var pos = {x:Math.floor(Math.random()*400), y:Math.floor(Math.random()*300), r:Math.floor(Math.random()*90)+4};
-//if ((pos.x-pos.r) < 0) {
-//    pos.x+=pos.r;
-//}
-//else if ((pos.x+pos.r) > 400) {
-//    pos.x-=pos.r;
-//}
-//if ((pos.y-pos.r) < 0) {
-//    pos.y += pos.r;
-//}
-//else if ((pos.y + pos.r) > 300) {
-//    pos.y-=pos.r;
-//}
-//var loops = ["circle", "rect"];
-//for (var i = 0; i < 100; i++) {
-//    var rand = Math.floor(Math.random()*2);
-//    var t = loops[rand];
-//}
-//var asseter = new Asset(t, {x:pos.x, y:pos.y}, pos.r, Math.floor(Math.random()*10)+2);
-//asseter.draw();
-//}, 100);
-setInterval(function(){ctx.clearRect(0,0,400, 400);},20);
-
-
-
-class Asset {
-    constructor(type,center, num1, num2, direction){
-        this.num1 = num1;
-        this.num2 = num2;
-        this.type = type.toLowerCase();
-        this.center = center;
-        this.direction = direction;
-        }
-    draw(){
-    if (this.type == "circle") {
-        ctx.beginPath();
-        ctx.arc(this.center.x, this.center.y, this.num1,0, this.num2*Math.PI);
-        ctx.stroke();
-    }
-    else if (this.type == "rect") {
-        ctx.beginPath();
-     ctx.rect(this.center.x - (this.num1/2), this.center.y - (this.num2/2),this.num1,this.num2);
-     ctx.stroke();
-    }
-
-    }
-}
-var bouncyBall = new Asset("circle", {x:20,y:20}, 10, 5, "south-east");
-function bouncyBouncy() {
-    setInterval(bouncy, 10);
-    function bouncy() {
-        if ((bouncyBall.center.x + bouncyBall.num1) == c.width) {
-            bouncyBall = new Asset("Circle", bouncyBall.center, bouncyBall.num1, bouncyBall.num2, "north-west");
-        }else if (bouncyBall.direction == "north-east") {
-            bouncyBall = new Asset("Circle", {x:bouncyBall.center.x+1,y:bouncyBall.center.y-1},bouncyBall.num1, bouncyBall.num2, "north-east");
-        }
-        if ((bouncyBall.center.y - bouncyBall.num1) == 0) {
-            bouncyBall = new Asset("Circle", bouncyBall.center, bouncyBall.num1, bouncyBall.num2, "south-west");
-        }else if (bouncyBall.direction == "south-east") {
-                       bouncyBall = new Asset("Circle", {x:bouncyBall.center.x+1, y:bouncyBall.center.y+1}, bouncyBall.num1, bouncyBall.num2, "south-east");
-        }
-        if ((bouncyBall.center.x - bouncyBall.num1) <= 0) {
-            bouncyBall = new Asset("Circle", bouncyBall.center, bouncyBall.num1, bouncyBall.num2, "south-east");
-        }else if (bouncyBall.direction == "north-west") {
-            bouncyBall = new Asset("Circle", {x:bouncyBall.center.x-1, y:bouncyBall.center.y-1}, bouncyBall.num1, bouncyBall.num2, "north-west");
-        }
-        if ((bouncyBall.center.y - bouncyBall.num1) == c.height) {
-            bouncyBall = new Asset("Circle", bouncyBall.center, bouncyBall.num1, bouncyBall.num2, "north-east");
-        }else if (bouncyBall.direction == "south-west") {//down right
-                    bouncyBall = new Asset("Circle", {x:bouncyBall.center.x-1, y:bouncyBall.center.y+1}, bouncyBall.num1, bouncyBall.num2, "south-west");
-}
-        bouncyBall.draw();
-    }
-}
-
-bouncyBouncy();
-// im going to have you guys figure out how to make the circle work with corners because currently it has
-//sad when it gets to a corner also this shows when i changed the canvas to 400 400 so ge to it i guess
-
-
-//few questions to answer because i want to know if you all know how my class works there are three questions just
-//make another space put your name and then your answer
-
+var rl = document.getElementById("rainbowLines");
+var rb = document.getElementById("rainbowBall");
 /*
-//Question One : How does the Asset class work? (MC)
-//a. it doesn't
-//b. it only makes parameters for an object
-//c. it makes the parameters and draws the object
-//d. none of the above
+var x = c.width / 20; //These 2 variables determine the starting circles location, in this case, the top right of the screen.
+var y = c.height / 20;
 
+var dx = 2; //These variables will be used later to change the position of the circle.
+var dy = 4; //Changing both of these numbers will also change the speed of the circle (in other words, how many units the circle moves per frame).
+
+var size = (Math.abs(c.width - c.height)) / 10;
+if (size == 0) { size = 25; }
+var ballSize = Math.floor(Math.random() * size - 5) + 6; //Sets the circle's radius.
 */
+var size = (Math.abs(c.width - c.height)) / 10;
+if (size == 0) { size = 25; };
+var one = Math.floor(Math.random()*13)+2;
+var two = Math.floor(Math.random()*11)+4;
+ var myImg = new Image();
+     myImg.onload = function (){
+      drawSqr();
+    };
+    myImg.src = "phoenixAced.png";
 
-//Question Two : What is the width of the canvas i use and how do you change it
-//
+var sqr = {x:c.width / 2, y:c.height / 2, dx:one, dy:two, width:80, height:80};
 
+function drawSqr() {
+ var colors = ["red", "green", "blue", "violet", "pink", "cyan", "yellow", "orange"];
+   var rainbow = rb.checked;
 
-//Question Three : Do you understand my code or do I have to explain all of it? (y/n/m)
-//Yes?
-//No?
-//Maybe?//Maybe will need to be explained
+   if (rainbow == true) {
+    //code
+  for (var j = 0; j< 10; j++) {
+    var color = colors[Math.floor(Math.random()*colors.length)];
+  }
+  ctx.fillStyle = color;
+  }else{
+   ctx.fillStyle = "#0095DD"; //Sets the color of the circle to light blue.
+  }
+        ctx.drawImage(myImg, sqr.x, sqr.y, sqr.width, sqr.height);
+}
+  var lines = [{x:(sqr.x+(sqr.width/2)),y:(sqr.y + (sqr.height/2))}];
 
+function lineDraw() {
+  ctx.beginPath();
+  var rainbow = rl.checked;
+  var colors = ["red", "green", "blue", "violet", "pink", "cyan", "yellow", "orange"];
+  for (var i = lines.length - 1; i >= 0; i--) {
+  if (i == lines.length-1) {
+    ctx.moveTo((sqr.x+(sqr.width/2)),(sqr.y + (sqr.height/2)));
+    ctx.lineTo(lines[i].x,lines[i].y);
+  }
+  else {
+    ctx.moveTo(lines[i].x, lines[i].y);
+    ctx.lineTo(lines[i+1].x,lines[i+1].y);
 
+  }
+  if (rainbow == true) {
+    //code
+  for (var j = 0; j< 10; j++) {
+    var color = colors[Math.floor(Math.random()*colors.length)];
+  }
+  ctx.strokeStyle = color;
+  }else{
+  ctx.strokeStyle = "black";
+  }
+  }
 
-//These question are just so that i know that all of you know how my code works so far to make and draw objects
-//and with easy access to remove the object when you need to and update and change it when needed :)
+  ctx.stroke();
+}
+function draw() {
+ ctx.clearRect(0, 0, c.width, c.height); //Clears the canvas every frame, so a new circle can be drawn.
+ lineDraw();
+ drawSqr();
+ if((sqr.x + sqr.dx > c.width) || (sqr.x + sqr.dx < 0)) { //If the circle's x position exceeds the width of the canvas...
+   sqr.dx = -sqr.dx; //Its x direction will be flipped.
+   lines.push({x:(sqr.x+(sqr.width/2)),y:(sqr.y + (sqr.height/2))});
+ }
+ if(((sqr.x +sqr.width) + sqr.dx > c.width) || (sqr.x + sqr.dx < 0)) { //If the circle's x position exceeds the width of the canvas...
+   sqr.dx = -sqr.dx; //Its x direction will be flipped.
+   lines.push({x:(sqr.x+(sqr.width/2)),y:(sqr.y + (sqr.height/2))});
+ }
+
+ if((sqr.y + sqr.dy > c.height) || (sqr.y + sqr.dy < 0)) { //If the circle's y position exceeds the height of the canvas...
+   sqr.dy = -sqr.dy; //Its y direction will be flipped.
+   lines.push({x:(sqr.x+(sqr.width/2)),y:(sqr.y + (sqr.height/2))});
+ }
+ if(((sqr.y+sqr.height) + sqr.dy > c.height) || (sqr.y + sqr.dy < 0)) { //If the circle's y position exceeds the height of the canvas...
+   sqr.dy = -sqr.dy; //Its y direction will be flipped.
+   lines.push({x:(sqr.x+(sqr.width/2)),y:(sqr.y + (sqr.height/2))});
+ }
+
+ sqr.x += sqr.dx;
+ sqr.y += sqr.dy;
+}
+
+setInterval(draw, 35);
