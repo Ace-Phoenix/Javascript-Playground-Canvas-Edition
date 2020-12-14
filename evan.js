@@ -14,6 +14,7 @@ if (size == 0) { size = 25; }
 var ballSize = Math.floor(Math.random() * size - 5) + 6; //Sets the circle's radius.
 */
 var size = (Math.abs(c.width - c.height)) / 10;
+var t = 0
 if (size == 0) { size = 25; };
 var one = Math.floor(Math.random()*13)+2;
 var two = Math.floor(Math.random()*11)+4;
@@ -26,17 +27,19 @@ var two = Math.floor(Math.random()*11)+4;
 var sqr = {x:c.width / 2, y:c.height / 2, dx:one, dy:two, width:80, height:80};
 
 function drawSqr() {
- var colors = ["red", "green", "blue", "violet", "pink", "cyan", "yellow", "orange"];
    var rainbow = rb.checked;
+if (rainbow==false  && t !== 25 ){
+    t = 25;
+        myImg.src = "phoenixAced.png";
 
-   if (rainbow == true) {
+}
+if (rainbow==true ) {
+    t = 0;
+}
+   if (rainbow == true && t == 0) {
     //code
-  for (var j = 0; j< 10; j++) {
-    var color = colors[Math.floor(Math.random()*colors.length)];
-  }
-  ctx.fillStyle = color;
-  }else{
-   ctx.fillStyle = "#0095DD"; //Sets the color of the circle to light blue.
+    myImg.src = "image2.gif";
+    t=2;
   }
         ctx.drawImage(myImg, sqr.x, sqr.y, sqr.width, sqr.height);
 }

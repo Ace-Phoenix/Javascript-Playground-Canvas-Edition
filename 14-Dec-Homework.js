@@ -26,17 +26,13 @@ var two = Math.floor(Math.random()*11)+4;
 var sqr = {x:c.width / 2, y:c.height / 2, dx:one, dy:two, width:80, height:80};
 
 function drawSqr() {
- var colors = ["red", "green", "blue", "violet", "pink", "cyan", "yellow", "orange"];
    var rainbow = rb.checked;
 
    if (rainbow == true) {
     //code
-  for (var j = 0; j< 10; j++) {
-    var color = colors[Math.floor(Math.random()*colors.length)];
-  }
-  ctx.fillStyle = color;
+    myImg.src = "image2.gif";
   }else{
-   ctx.fillStyle = "#0095DD"; //Sets the color of the circle to light blue.
+    myImg.src = "phoenixAced.png";
   }
         ctx.drawImage(myImg, sqr.x, sqr.y, sqr.width, sqr.height);
 }
