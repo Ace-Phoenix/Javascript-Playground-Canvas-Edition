@@ -3,7 +3,7 @@ var ctx = c.getContext("2d");
 var rl = document.getElementById("rainbowLines");
 var rb = document.getElementById("rainbowBall");
 /*
-var x = c.width / 20; //These 2 variables determine the starting circles location, in this case, the top right of the screen.
+var x = c.width / 20; //These 2 variables determine the starting circles location, in this case, the top left of the screen.
 var y = c.height / 20;
 
 var dx = 2; //These variables will be used later to change the position of the circle.
@@ -26,7 +26,7 @@ function drawCircle() {
  var colors = ["red", "green", "blue", "violet", "pink", "cyan", "yellow", "orange"];
    var rainbow = rb.checked;
  ctx.beginPath();
- ctx.arc(ball.x, ball.y, ball.ballSize, 0, Math.PI*2); //The circle, on frame one, will always start in the middle, and its size will always be set to ballSize.
+ ctx.arc(ball.x, ball.y, ball.ballSize, 0, Math.PI*2); //The circle, on frame one, will always start at the top left, and its size will always be set to ballSize.
    if (rainbow == true) {
     //code
   for (var j = 0; j< 10; j++) {
