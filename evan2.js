@@ -9,6 +9,7 @@ var dy = 10; //Changing both of these numbers will also change the speed of the 
 
 var gravity = 0.2; //Sets the gravity pulling the ball to the ground.
 var damping = 0.9; //The rate at which the ball slows down.
+var traction = 0.8;
 
 var ballSize = 20; //Sets the circle's radius.
 
@@ -30,6 +31,7 @@ function draw() {
 
   if(y + dy > myCanvas.height - ballSize || y + dy < ballSize) { //If the circle's y position exceeds the height of the canvas...
     dy = -dy * damping; //Its y direction will be flipped, and it's speed will decrease.
+    vx *= tracton;
   }
   dy += gravity;
   x += dx;
