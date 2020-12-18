@@ -37,9 +37,9 @@ function draw() {
   dy += gravity; //Adds the gravity value to the ball's dy value, giving it a artificial force of gravity.
 
   x += dx;
-  if (((y + dy)+ballSize) <=300) {
-    //code
-  y += dy;
+
+  if (((y + dy) + ballSize) <= 300) {
+    y += dy;
   }
 }
 
