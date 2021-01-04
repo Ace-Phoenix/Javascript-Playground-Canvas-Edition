@@ -45,3 +45,9 @@ function draw() {
 }
 
 setInterval(draw, 10);
+document.addEventListener("keydown", keyPress);
+function keyPress(e) {
+    if (e.key == " ") {
+        console.log(e)
+    }
+}
