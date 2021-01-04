@@ -30,7 +30,7 @@ function draw() {
 
   if(y + dy > myCanvas.height - ballSize || y + dy < ballSize) { //If the circle's y position exceeds the height of the canvas...
      dy = -dy * damping; //Its y direction will be flipped, and it's speed will decrease.
-    dx *= traction;
+    //dx *= traction;
    }
 
   dy += gravity; //Adds the gravity value to the ball's dy value, giving it a artificial force of gravity.
@@ -43,9 +43,15 @@ function draw() {
 }
 
 setInterval(draw, 10);
-document.addEventListener("keydown", keyPress);
+document.addEventListener("keypress", keyPress);
 function keyPress(e) {
     if (e.key == " ") {
-        console.log(e)
+      //if (dx > 0) {
+      //  dx+=5;
+      //}
+      //if (dx < 0) {
+      //  dx-=5;
+      //}
+      dy-=10;
     }
 }
