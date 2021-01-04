@@ -29,11 +29,9 @@ function draw() {
   }
 
   if(y + dy > myCanvas.height - ballSize || y + dy < ballSize) { //If the circle's y position exceeds the height of the canvas...
-    console.log(dy + " before")
-    dy = -dy * damping; //Its y direction will be flipped, and it's speed will decrease.
+     dy = -dy * damping; //Its y direction will be flipped, and it's speed will decrease.
     dx *= traction;
-    console.log(dy + " after")
-  }
+   }
 
   dy += gravity; //Adds the gravity value to the ball's dy value, giving it a artificial force of gravity.
 
