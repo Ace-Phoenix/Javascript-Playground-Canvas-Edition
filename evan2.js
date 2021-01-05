@@ -43,15 +43,16 @@ function draw() {
 }
 
 setInterval(draw, 10);
-document.addEventListener("keypress", keyPress);
-function keyPress(e) {
-    if (e.key == " ") {
+
+document.addEventListener("keypress", keyPress); //This will look for a key that is pressed.
+function keyPress(e) { //Function that will play out when a key is pressed (e is just a placeholder)
+    if (e.key == " ") { //When this key is pressed (the empty string represents the spacebar)
       //if (dx > 0) {
       //  dx+=5;
       //}
       //if (dx < 0) {
       //  dx-=5;
       //}
-      dy-=10;
+      dy-=10; //Will make the ball jump a small distance.
     }
 }
