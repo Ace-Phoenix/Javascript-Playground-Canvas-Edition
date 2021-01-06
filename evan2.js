@@ -85,6 +85,7 @@ function draw() {
   ctx.clearRect(0, 0, myCanvas.width, myCanvas.height); //Clears the canvas every frame, so a new circle can be drawn.
   drawCircle();
 drawPipes();
+lines();
 
   if (x + dx > myCanvas.width - ballSize || x + dx < ballSize) { //If the circle's x position exceeds the width of the canvas...
     dx = -dx * damping; //The ball's x direction will be flipped, and it will bounce a specific distance (damping).
@@ -126,9 +127,4 @@ function lines() {
   ctx.stroke();
 }
 
-function drawLines() {
-  ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
-  lines();
-}
 
-setInterval(drawLines, 9);
